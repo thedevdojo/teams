@@ -1,0 +1,41 @@
+{
+    "name": "devdojo/teams",
+    "description": "Drop-in team support for Laravel — teams, memberships, roles & permissions, and email invitations, with a ready-made Livewire/Volt + Tailwind UI.",
+    "keywords": ["devdojo", "teams", "laravel", "livewire", "volt", "saas"],
+    "homepage": "https://github.com/thedevdojo/teams",
+    "license": "MIT",
+    "type": "library",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "Tony Lea",
+            "email": "tony@devdojo.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2|^8.3|^8.4",
+        "laravel/framework": "^11.0|^12.0|^13.0",
+        "livewire/livewire": "^3.0|^4.0",
+        "livewire/volt": "^1.0",
+        "laravel/folio": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Devdojo\\Teams\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Devdojo\\Teams\\TeamsServiceProvider"
+            ],
+            "aliases": {
+                "Teams": "Devdojo\\Teams\\TeamsFacade"
+            }
+        }
+    }
+}
