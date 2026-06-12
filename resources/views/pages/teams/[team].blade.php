@@ -5,13 +5,21 @@ use Illuminate\Support\Facades\Gate;
 
 use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;
+use function Laravel\Folio\render;
 
 middleware(['auth']);
 name('teams.show');
 
-$team = Teams::teamModel()::findOrFail($team);
+// Resolve the team inside render() — top-level page code also runs when
+// Folio scans pages to collect names/middleware, where no route parameter
+// exists yet.
+render(function ($view, $team) {
+    $team = Teams::teamModel()::findOrFail($team);
 
-Gate::authorize('view', $team);
+    Gate::authorize('view', $team);
+
+    return $view->with('team', $team);
+});
 
 ?>
 
